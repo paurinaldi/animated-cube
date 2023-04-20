@@ -1,19 +1,36 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import Cube from "../components/cube";
 
 const IndexPage = () => {
+  const [color, setColor] = useState("#0D8E77");
+
   return (
-    <div className="relative h-screen w-screen">
+    <div className="relative flex justify-center h-screen w-screen">
+      <div className="flex gap-5 mt-10 ml-10">
+        <button
+          className="block w-10 h-4 p-2 text-sm rounded-2xl bg-[#e2c2f6]"
+          onClick={() => setColor("#e6cbf7")}
+        ></button>
+        <button
+          className="block h-4 w-10 p-2 text-sm rounded-2xl bg-[#8fbecf]"
+          onClick={() => setColor("#a0c7d5")}
+        ></button>
+        <button
+          className="block h-4 w-10 p-2 text-sm rounded-2xl bg-[#0fa186]"
+          onClick={() => setColor("#0D8E77")}
+        ></button>
+      </div>
       <motion.div
-        className="w-fit h-fit absolute bottom-32 left-0"
+        className="w-fit h-fit absolute bottom-32 left-32"
         //had to put position values here instead of on the cube
-        initial={{ opacity: 0, x: "80vh", rotate: 180 }}
+        initial={{ opacity: 0, x: "150vh", rotate: 180 }}
         animate={{ opacity: 1, x: 0, rotate: 0 }}
-        transition={{ duration: 2.5, ease: "easeInOut", delay: 1.3 }}
+        transition={{ duration: 3, ease: "easeInOut", delay: 1.3 }}
       >
         <Cube
           size={200}
-          color={"#0D8E77"}
+          color={color}
           opacity={0.6}
           // rotation="150"
           dragConstraints={{ left: 15, right: 15, top: 15, bottom: 15 }}
