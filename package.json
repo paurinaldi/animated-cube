@@ -7,6 +7,7 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "chroma-js": "^2.4.2",
     "framer-motion": "^10.12.4",
     "next": "latest",
     "postcss-flexbugs-fixes": "^5.0.2",
