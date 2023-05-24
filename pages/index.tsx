@@ -2,9 +2,19 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Cube from "../components/cube";
 
-const IndexPage = () => {
-  const [color, setColor] = useState("#0D8E77");
+import { client } from "../contentful.js";
 
+export async function getStaticProps({ preview = false }) {
+  const response = await client.getEntries();
+  return {
+    props: {
+      entries: response.items,
+    },
+  };
+}
+
+const IndexPage = ({ entries }) => {
+  const [color, setColor] = useState("#0D8E77");
   return (
     <div className="relative flex flex-col justify-center w-screen">
       <div className="flex gap-5 mt-10 ml-10">
@@ -37,6 +47,9 @@ const IndexPage = () => {
           dropShadow={true}
         ></Cube>
       </motion.div>
+      {entries.map((item, index) => {
+        return <p key={index}>{item.fields.postId}</p>;
+      })}
     </div>
   );
 };
