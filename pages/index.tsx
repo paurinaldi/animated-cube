@@ -50,6 +50,7 @@ const IndexPage = ({ entries }) => {
       {entries.map((item, index) => {
         return <p key={index}>{item.fields.postId}</p>;
       })}
+      <p>pum</p>
     </div>
   );
 };
